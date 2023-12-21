@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
 import { TaskLottie } from '../LottieReact/LottieReact';
-import { AuthContext } from '../../AuthProvider/AuthProvider';
+
 
 
 const Banner = () => {
@@ -9,7 +8,7 @@ const Banner = () => {
     return (
       <div className="flex  justify-center h-[calc(100vh-94px)]  items-center px-8 md:px-16 lg:px-24">
         <div className="space-y-6">
-          <h1 className="text-3xl lg:w-[80%]  md:text-4xl font-semibold text-gray-800">
+          <h1 className="text-3xl lg:w-[80%]  md:text-4xl font-semibold text-gray-900">
             Boost your productivity by 10X with Taskiee.{" "}
           </h1>
           <p className="md:w-[60%] text-sm md:text-base text-gray-500">

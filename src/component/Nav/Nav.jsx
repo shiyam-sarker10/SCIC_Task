@@ -10,7 +10,11 @@ const Nav = () => {
       <div className="flex  border shadow-md text-black items-center py-4  justify-between px-8 md:px-16 lg:px-24">
         <div className="hidden md:block">
           <div className="flex gap-2   items-center">
-            <img className="w-[35px] filter grayscale-[100px] " src={logo} alt="" />
+            <img
+              className="w-[35px] filter grayscale-[100px] "
+              src={logo}
+              alt=""
+            />
             <h2 className=" font-semibold py-4 text-xl">Taskiee</h2>
           </div>
         </div>
@@ -48,7 +52,7 @@ const Nav = () => {
             </li>
             <li className=" duration-500 ease-in-out border hover:bg-black hover:text-white border-black rounded px-6 py-2">
               <NavLink
-                to="/messages"
+                to="/register"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -99,7 +103,7 @@ const Nav = () => {
             </li>
             <li className=" duration-500 ease-in-out border hover:bg-black hover:text-white border-black rounded-lg px-6 py-2">
               <NavLink
-                to="/messages"
+                to="/register"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
