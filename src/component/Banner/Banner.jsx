@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { TaskLottie } from '../LottieReact/LottieReact';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Banner = () => {
+
+    
     return (
       <div className="flex  justify-center h-[calc(100vh-94px)]  items-center px-8 md:px-16 lg:px-24">
         <div className="space-y-6">
@@ -14,7 +17,7 @@ const Banner = () => {
             efficiently today rather than postponing productivity.
           </p>
           <button className="duration-500  text-sm md:text-base ease-in-out border hover:bg-black hover:text-white border-black rounded px-6 py-2">
-            Let's Explore
+            Let's Explore 
           </button>
         </div>
         <div className="md:w-1/2 hidden md:block ">
