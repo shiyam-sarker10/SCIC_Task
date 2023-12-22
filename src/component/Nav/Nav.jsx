@@ -3,8 +3,20 @@ import logo from '../../assets/logo.png'
 import { RxCross1 } from "react-icons/rx";
 import { RiMenuAddFill } from "react-icons/ri";
 import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, LogOut } = useAuth();
+  const [isProfile, setIsProfile] = useState(false);
+
+
+const handleLogout = () => {
+  LogOut()
+  .then(result)
+  .catch(error)
+}
+
+ 
    
     return (
       <div className="flex  border shadow-md text-black items-center py-4  justify-between px-8 md:px-16 lg:px-24">
@@ -50,15 +62,62 @@ const Nav = () => {
                 Pricing
               </NavLink>
             </li>
-            <li className=" duration-500 ease-in-out border hover:bg-black hover:text-white border-black rounded px-6 py-2">
+            {user ? (
+              <li
+                onClick={() => setIsProfile(!isProfile)}
+                className=" duration-500 w-[70px]  h-[70px] rounded-full ease-in-out border hover:bg-black hover:text-white border-black p-1"
+              >
+                <img
+                  className="w-full h-full rounded-full"
+                  src={user?.photoURL}
+                  alt=""
+                />
+              </li>
+            ) : (
+              <li className=" duration-500 ease-in-out border  hover:bg-black hover:text-white border-black rounded px-6 py-2">
+                <NavLink
+                  to="/register"
+                  className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "active" : ""
+                  }
+                >
+                  Register
+                </NavLink>
+              </li>
+            )}
+          </ul>
+          <ul
+            className={`bg-gray-50 w-[150px] space-y-2 shadow-md border ${
+              isProfile
+                ? "absolute top-[100px]  duration-700 opacity-100 rounded-lg p-4 ease-in-out right-[5%] z-50"
+                : " absolute  duration-700   opacity-0 ease-in-out right-[5%] -top-[999px] "
+            }`}
+          >
+            <li className=" text-center">
               <NavLink
-                to="/register"
+                to="/dashboard/profile"
                 className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "active" : ""
+                  isPending ? "pending" : isActive ? "text-white bg-black" : ""
                 }
               >
-                Register
+                Profile
               </NavLink>
+            </li>
+            <li className="text-center">
+              <NavLink
+                to="/dashboard"
+                className={({ isActive, isPending }) =>
+                  isPending ? "pending" : isActive ? "text-white bg-black" : ""
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
+            <li
+              onClick={handleLogout}
+              className=" text-center border text-red-500 rounded-lg mx-auto duration-500 ease-in-out w-max px-4 py-1 border-red-500 hover:bg-red-500 hover:text-white"
+            >
+              Logout
             </li>
           </ul>
         </div>

@@ -1,22 +1,72 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaLock } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import SocialLogin from "../component/SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 
 
 const Register = () => {
+     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        const name = e.target.name.value
-        const email = e.target.email.value
-        const image = e.target.image.files[0]
-        console.log(name,email,image)
+     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
+     const { createUser, UserUpdate, LogOut } = useContext(AuthContext);
+     const loginNavigate = useNavigate();
 
-    }
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const name = e.target.name.value;
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+      const image = e.target.image.files[0];
+      const imageFile = { image: image };
+    
+
+      const imageRes = await axios.post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+
+      });
+      const imageUrl = imageRes.data.data.display_url;
+      console.log(imageUrl);
+      const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+      if (password.length < 6) {
+        toast.error("Password must be at least 6 characters long");
+        return;
+      } else if (!/[A-Z]/.test(password)) {
+        toast.error("Password must contain 1 capital letter ");
+        return;
+      } else if (!specialChars.test(password)) {
+        toast.error("Password must contain 1 spacial  character ");
+        return;
+      } else {
+        createUser(email, password)
+          .then((result) => {
+            console.log(result);
+            toast.success("SuccessFully registered");
+            UserUpdate(name, imageUrl)
+              .then((result) => {
+                console.log(result);
+                loginNavigate("/login");
+              })
+              .catch((error) => {
+                
+              });
+            LogOut()
+              .then((result) => {})
+              .catch((error) => {});
+          })
+          .catch((error) => {
+            toast.error(error);
+          });
+      }
+
+    };
   return (
     <div className="flex justify-center h-screen items-center px-4 my-20">
       <div className="max-w-[400px]  border shadow-md py-10 px-4 md:px-10 rounded-lg">

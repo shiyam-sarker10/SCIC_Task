@@ -1,25 +1,42 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate} from 'react-router-dom';
 import { FaLock } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
 import SocialLogin from "../component/SocialLogin/SocialLogin";
+import { toast } from 'react-toastify';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 
 
 
 const Login = () => {
+      const { signInUser } = useContext(AuthContext);
+      const navigateDashbaord = useNavigate()
+      
+
 
     const handleSubmit = (e) => {
       e.preventDefault();
       
-      const email = e.target.email.value;
-      const password = e.target.password.value;
-      console.log(email,password );
+       const email = e.target.email.value;
+       const password = e.target.password.value;
+
+       if (email === "" || password === "") {
+         toast.info("Enter something or sign in with github or google");
+       } else {
+         signInUser(email, password)
+           .then((result) => {
+             toast.success("Login Successfully");
+             navigateDashbaord("/dashboard")
+           })
+           .catch((error) => {
+             toast.error(`${error}`);
+           });
+       }
     }
     return (
       <div className="flex justify-center h-screen items-center px-4">
         <div className="max-w-[400px]  border shadow-md py-10 px-4 md:px-10 rounded-lg">
-          <h1 className="text-3xl font-semibold mb-6">Register Now</h1>
+          <h1 className="text-3xl font-semibold mb-6">Login Now</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             
             {/* Email  */}
@@ -85,7 +102,7 @@ const Login = () => {
             {/* submit  */}
             <div className="flex justify-center pt-4">
               <button className="duration-500  text-sm md:text-base ease-in-out border hover:bg-black hover:text-white border-black rounded px-6 py-2">
-                Register
+                Login
               </button>
             </div>
             <div className="flex justify-center items-center gap-4">
