@@ -34,7 +34,7 @@ const handleLogout = () => {
           <ul className="flex gap-6 items-center md:gap-10 text-lg md:text-xl">
             <li className="hover:border-b  border-black">
               <NavLink
-                to="/messages"
+                to="/"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -44,7 +44,7 @@ const handleLogout = () => {
             </li>
             <li className="hover:border-b  border-black">
               <NavLink
-                to="/messages"
+                to="/about"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -54,7 +54,7 @@ const handleLogout = () => {
             </li>
             <li className="hover:border-b  border-black">
               <NavLink
-                to="/messages"
+                to="/pricing"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -93,7 +93,7 @@ const handleLogout = () => {
                 : " absolute  duration-700   opacity-0 ease-in-out right-[5%] -top-[999px] "
             }`}
           >
-            <li className=" text-center">
+            <li onClick={()=>setIsOpen(false)} className=" text-center">
               <NavLink
                 to="/dashboard/profile"
                 className={({ isActive, isPending }) =>
@@ -103,7 +103,7 @@ const handleLogout = () => {
                 Profile
               </NavLink>
             </li>
-            <li className="text-center">
+            <li onClick={()=>setIsOpen(false)} className="text-center">
               <NavLink
                 to="/dashboard"
                 className={({ isActive, isPending }) =>
@@ -130,9 +130,9 @@ const handleLogout = () => {
         </button>
         <div className={` ${isOpen ? "" : "hidden"} md:hidden mx-auto `}>
           <ul className="flex flex-col bg-white inset-0 absolute transition-all duration-500 ease-in-out gap-4 justify-center items-center text-lg md:text-xl">
-            <li className="hover:border-b duration-500 ease-in-out border-black">
+            <li onClick={()=>setIsOpen(false)} className="hover:border-b duration-500 ease-in-out border-black">
               <NavLink
-                to="/messages"
+                to="/"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -140,9 +140,9 @@ const handleLogout = () => {
                 Home
               </NavLink>
             </li>
-            <li className="hover:border-b duration-500 ease-in-out border-black">
+            <li onClick={()=>setIsOpen(false)} className="hover:border-b duration-500 ease-in-out border-black">
               <NavLink
-                to="/messages"
+                to="/about"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -150,9 +150,9 @@ const handleLogout = () => {
                 About
               </NavLink>
             </li>
-            <li className="hover:border-b duration-500 ease-in-out border-black">
+            <li onClick={()=>setIsOpen(false)} className="hover:border-b duration-500 ease-in-out border-black">
               <NavLink
-                to="/messages"
+                to="/pricing"
                 className={({ isActive, isPending }) =>
                   isPending ? "pending" : isActive ? "active" : ""
                 }
@@ -160,7 +160,7 @@ const handleLogout = () => {
                 Pricing
               </NavLink>
             </li>
-            <li className=" duration-500 ease-in-out border hover:bg-black hover:text-white border-black rounded-lg px-6 py-2">
+            <li onClick={()=>setIsOpen(false)} className=" duration-500 ease-in-out border hover:bg-black hover:text-white border-black rounded-lg px-6 py-2">
               <NavLink
                 to="/register"
                 className={({ isActive, isPending }) =>

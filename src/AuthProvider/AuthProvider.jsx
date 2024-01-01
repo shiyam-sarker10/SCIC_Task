@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
 
 
   const LogOut = () => {
-    signOut(auth);
+   return signOut(auth);
   };
 
 

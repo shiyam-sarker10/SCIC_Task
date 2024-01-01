@@ -1,12 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Home from "../pages/Home";
+import About from "../pages/About";
 import Register from './../pages/Register';
 import Login from './../pages/Login';
 import Dashboard from "../Layout/Dashboard/Dashboard";
 import DashboardProfile from "../Layout/Dashboard/DashboardProfile";
 import DashboardAddTask from './../Layout/Dashboard/DashboardAddTask';
 import DashboardAllTask from './../Layout/Dashboard/DashboardAllTask';
+import DashboardWelcome from './../Layout/Dashboard/DashboardWelcome';
+import Pricing from './../pages/Pricing';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +19,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+      },
+      {
+        path: "about",
+        element: <About></About>,
+      },
+      {
+        path: "pricing",
+        element: <Pricing></Pricing>,
       },
     ],
   },
@@ -33,7 +44,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <h1>Hello</h1>,
+        element: <DashboardWelcome></DashboardWelcome>,
       },
       {
         path: "profile",
