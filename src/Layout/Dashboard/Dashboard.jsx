@@ -67,7 +67,13 @@ const Dashboard = () => {
                     All Task
                   </li>
                 </Link>
-                <li></li>
+                <Link to="/dashboard/timer">
+                  <li className="flex gap-8 font-medium items-center px-6 py-2 duration-500 ease-in-out hover:bg-black/10 active:bg-black active:text-white">
+                    <FaTasks className="text-[30px]" />
+                    All Task
+                  </li>
+                </Link>
+                
               </ul>
             </div>
           </div>

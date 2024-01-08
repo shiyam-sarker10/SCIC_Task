@@ -13,6 +13,7 @@ const Home = () => {
           <img className='w-[80%] rounded-2xl shadow-lg mx-auto my-6'  src={allTask} alt="" />
         </div>
         <PWGB></PWGB>
+        
       </div>
     );
 };

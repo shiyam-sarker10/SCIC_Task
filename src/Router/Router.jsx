@@ -10,6 +10,7 @@ import DashboardAddTask from './../Layout/Dashboard/DashboardAddTask';
 import DashboardAllTask from './../Layout/Dashboard/DashboardAllTask';
 import DashboardWelcome from './../Layout/Dashboard/DashboardWelcome';
 import Pricing from './../pages/Pricing';
+import DashboardTimer from "../Layout/Dashboard/DashboardTimer";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "all task",
         element: <DashboardAllTask></DashboardAllTask>,
+      },
+      {
+        path: "timer",
+        element: <DashboardTimer></DashboardTimer>,
       },
     ],
   },
