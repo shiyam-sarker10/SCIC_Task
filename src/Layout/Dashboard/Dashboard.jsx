@@ -4,6 +4,7 @@ import { MdDashboard } from "react-icons/md";
 import { RiProfileFill } from "react-icons/ri";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
+import { IoMdStopwatch } from "react-icons/io";
 // import component 👇
 import Drawer from 'react-modern-drawer'
 import { RiMenuUnfoldLine } from "react-icons/ri";
@@ -69,11 +70,10 @@ const Dashboard = () => {
                 </Link>
                 <Link to="/dashboard/timer">
                   <li className="flex gap-8 font-medium items-center px-6 py-2 duration-500 ease-in-out hover:bg-black/10 active:bg-black active:text-white">
-                    <FaTasks className="text-[30px]" />
-                    All Task
+                    <IoMdStopwatch className="text-[30px]" />
+                    Stop Watch
                   </li>
                 </Link>
-                
               </ul>
             </div>
           </div>
