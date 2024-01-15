@@ -84,7 +84,7 @@ const Testimonial = () => {
 
   const isSmallScreen = window.innerWidth <= 768;
   return (
-    <div className="max-w-full min-w-[350px]  mx-auto h-[500px] flex flex-row items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
+    <div className="max-w-full min-w-[350px]  mx-auto h-[400px] flex flex-row items-center overflow-hidden gap-5 lg:gap-10 px-8 md:px-16 lg:px-24">
       <div className="relative overflow-hidden">
         <div className="absolute w-full h-full flex items-center justify-between z-50 px-5">
           {/* arrow left */}
