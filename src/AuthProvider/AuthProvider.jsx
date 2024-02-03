@@ -30,7 +30,7 @@ const AuthProvider = ({children}) => {
   };
 
     const UserUpdate = (name, photo) => {
-      updateProfile(auth.currentUser, {
+     return updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photo,
       });
@@ -40,7 +40,6 @@ const AuthProvider = ({children}) => {
     useEffect(() => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-
       });
       return () => {
         return unSubscribe();

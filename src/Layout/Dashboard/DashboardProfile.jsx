@@ -2,6 +2,8 @@ import React from 'react';
 import useAuth from '../../hooks/useAuth';
 import { BsEnvelopeAt } from "react-icons/bs";
 import { useNavigate } from 'react-router-dom';
+import Modal from '../../component/Modal/Modal';
+
 
 const DashboardProfile = () => {
     const loginNavigate = useNavigate()
@@ -10,7 +12,7 @@ const DashboardProfile = () => {
     const handleLogout = () => {
       LogOut()
       .then(result =>{
-        loginNavigate("/login")
+        loginNavigate("/")
         console.log("this is logout")
       })
       .catch(error);
@@ -19,7 +21,10 @@ const DashboardProfile = () => {
 
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="max-w-[450px] md:w-[450px] space-y-4 shadow-lg rounded-lg p-6 flex flex-col justify-center items-center">
+        <div className=" relative w-[350px] max-w-[450px] md:w-[450px]  space-y-4 shadow-lg rounded-lg p-6 flex flex-col justify-center items-center">
+          <div className="absolute -right-20 top-5">
+            <Modal></Modal>
+          </div>
           <img
             className="rounded-full w-[120px] h-[120px] object-cover mx-auto"
             src={user?.photoURL}

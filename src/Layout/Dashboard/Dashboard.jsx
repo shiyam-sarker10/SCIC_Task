@@ -85,7 +85,7 @@ const Dashboard = () => {
             <RiMenuUnfoldLine className="text-[30px] text-white" />
           </button>
         </div>
-        <div className="p-10">
+        <div className="p-10 overflow-hidden">
           <Outlet></Outlet>
         </div>
       </div>

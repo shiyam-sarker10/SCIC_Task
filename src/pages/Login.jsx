@@ -26,7 +26,7 @@ const Login = () => {
          signInUser(email, password)
            .then((result) => {
              toast.success("Login Successfully");
-             navigateDashbaord("/dashboard")
+             navigateDashbaord("/dashboard/profile");
            })
            .catch((error) => {
              toast.error(`${error}`);
